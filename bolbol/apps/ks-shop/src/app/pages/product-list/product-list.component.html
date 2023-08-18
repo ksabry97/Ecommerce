@@ -1,0 +1,27 @@
+<div class="grid">
+  <div class="categories-list col-3" *ngIf="isCategory">
+    <h3>Categories</h3>
+    <div class="flex flex-column mt-4">
+      <div *ngFor="let category of catgeories" class="field-checkbox">
+        <p-checkbox
+          [(ngModel)]="category.checked"
+          name="group"
+          [binary]="true"
+          [value]="category"
+          (onChange)="catgeoryFilter()"
+        ></p-checkbox>
+        <label [for]="category.id">{{ category.name }}</label>
+      </div>
+    </div>
+  </div>
+  <div
+    class="products mt-7"
+    [ngClass]="{ 'col-9': isCategory, 'col-12': !isCategory }"
+  >
+    <div class="products-items">
+      <div *ngFor="let product of products">
+        <ui-product-item [product]="product"></ui-product-item>
+      </div>
+    </div>
+  </div>
+</div>

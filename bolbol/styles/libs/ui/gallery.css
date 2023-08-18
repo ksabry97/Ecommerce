@@ -1,0 +1,21 @@
+.gallery ul {
+  display: flex;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+}
+
+.gallery ul li {
+  display: block;
+  margin-right: 0.5rem;
+  background-size: cover;
+  width: 5rem;
+  height: 5rem;
+  cursor: pointer;
+}
+@media screen and (max-width: 760px) {
+  .gallery ul li {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+}

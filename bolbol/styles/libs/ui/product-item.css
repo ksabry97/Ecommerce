@@ -1,0 +1,62 @@
+.item {
+  margin-top: 5rem;
+  width: 12rem;
+  height: 12rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: white;
+  border-radius: 1rem;
+  text-align: center;
+  cursor: pointer;
+}
+.product-image {
+  margin-top: -3rem;
+  height: 50%;
+  width: 80%;
+}
+.product-image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.product-price {
+  color: #fba1b7;
+}
+.item p-button .seeMore {
+  margin-top: 2rem;
+  color: #fba1b7;
+  background-color: white;
+  border: 1px solid #fba1b7;
+  outline: none;
+}
+.item p-button .seeMore:hover {
+  color: white;
+  background-color: #fba1b7;
+  border: 1px solid #fba1b7;
+}
+
+/* css for smaller screens */
+@media screen and (max-width: 760px) {
+  .item {
+    margin-top: 2rem;
+    width: 7rem;
+    height: 6.5rem;
+    font-size: 0.6rem;
+    border-radius: 0.6rem;
+    gap: 0;
+  }
+  .product-image {
+    margin-top: -0.2rem;
+  }
+  .item p-button .seeMore {
+    font-size: 0.5rem;
+    text-align: center;
+    padding: 0.3rem;
+    margin-bottom: 1.5rem;
+  }
+  .item .seeMore .pi {
+    font-size: 0.5rem;
+  }
+}

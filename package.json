@@ -1,0 +1,7 @@
+{
+  "dependencies": {
+    "animate.css": "^4.1.1",
+    "normalize.css": "^8.0.1",
+    "normalizecss": "^3.0.0"
+  }
+}

@@ -1,0 +1,39 @@
+.checkout-page {
+  min-height: 500px;
+}
+.checkout-page button {
+  border: 0;
+}
+
+.checkout-form .checkout form {
+  margin-top: 25px;
+}
+.checkout-page .checkout-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.checkout-button button {
+  align-self: center;
+  width: 100%;
+}
+
+.thankyou-page {
+  text-align: center;
+  padding: 1rem;
+  justify-content: center;
+  align-items: center;
+}
+@media screen and (max-width: 760px) {
+  .back-cart .p-button {
+    font-size: 0.6rem;
+    width: 6rem;
+    height: 1.5rem;
+  }
+  .back-cart .p-button .pi {
+    font-size: 0.5rem !important;
+  }
+  .thankyou-page {
+    font-size: 1.2rem !important;
+  }
+}

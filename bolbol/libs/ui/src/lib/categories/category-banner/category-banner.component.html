@@ -1,0 +1,14 @@
+<div class="category-banner">
+  <h3>Categories</h3>
+  <div class="categories">
+    <div
+      class="category"
+      *ngFor="let category of cateogries"
+      [ngStyle]="{ backgroundColor: category.color }"
+      [routerLink]="'/category/' + category.id"
+    >
+      <div class="category-icon"><i class="pi {{ category.icon }}"></i></div>
+      <div class="category-name">{{ category.name }}</div>
+    </div>
+  </div>
+</div>

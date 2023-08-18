@@ -1,0 +1,16 @@
+/* importing global css files */
+@import '../styles/base/fonts.css';
+@import '../styles/base/colors.css';
+
+/* External libraries */
+@import '/node_modules/normalize.css/normalize.css';
+@import 'primeng/resources/themes/lara-light-blue/theme.css';
+@import 'node_modules/primeng/resources/primeng.min.css';
+@import 'primeicons/primeicons.css';
+@import '/node_modules/primeflex/primeflex.css';
+@import '../styles/base/config.css';
+
+/* importing styles for specific components */
+@import 'apps/admin/shell.css';
+@import 'apps/admin/dashboard.css';
+@import 'libs/users.css';

@@ -1,0 +1,38 @@
+.admin-sidebar {
+  background-color: var(--color-tertiary-opacity);
+  height: 100%;
+  position: fixed;
+  top: 0;
+  width: 14rem;
+}
+ul {
+  padding: 1rem;
+}
+li {
+  list-style: none;
+  margin-bottom: 1rem;
+  font-size: 1.4rem;
+}
+.logo img {
+  margin-top: 1rem;
+  margin-left: 1rem;
+  width: 30%;
+}
+a,
+i {
+  color: black;
+}
+a:hover {
+  background-color: var(--color-primary-opacity);
+  padding: 0.2rem;
+  cursor: pointer;
+  border-radius: 0.4rem;
+}
+i {
+  margin-right: 0.5rem;
+}
+.pi-sign-out,
+.sign-out {
+  color: var(--color-secondary);
+  margin-top: 3rem;
+}

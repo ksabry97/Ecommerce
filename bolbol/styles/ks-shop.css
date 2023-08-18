@@ -1,0 +1,42 @@
+/* importing global css files */
+@import '../styles/base/fonts.css';
+@import '../styles/base/colors.css';
+@import '../styles/apps/ks-shop/header.css';
+@import '../styles/apps/ks-shop/footer.css';
+@import '../styles/apps/ks-shop/products.css';
+@import '../styles/apps/ks-shop/product-detail.css';
+@import '../styles/apps/ks-shop/products-list.css';
+@import '../styles/apps/ks-shop/order-summary.css';
+@import '../styles/apps/ks-shop/checkout-page.css';
+@import '../styles/apps/ks-shop/cart-page.css';
+@import '../styles/libs/ui/banner.css';
+@import '../styles/libs/ui/gallery.css';
+@import '../styles/libs/ui/category-banner.css';
+@import '../styles/libs/ui/product-item.css';
+@import '../styles/libs/ui/featured-products.css';
+/* External libraries */
+@import 'primeng/resources/themes/lara-light-blue/theme.css';
+@import 'primeng/resources/primeng.css';
+@import 'primeicons/primeicons.css';
+@import '/node_modules/primeflex/primeflex.css';
+@import '~animate.css/animate.css';
+@import '../styles/base/config.css';
+@import '/node_modules/normalize.css/normalize.css';
+
+/* some customs css*/
+
+.container {
+  width: 95vw;
+  margin: 0 auto;
+  background-color: #f5f5f5;
+  padding: 1rem;
+  padding-bottom: 0;
+  height: auto;
+  overflow-y: scroll;
+}
+@media screen and (max-width: 760px) {
+  .container {
+    padding: 0.3rem;
+    padding-bottom: 0;
+  }
+}

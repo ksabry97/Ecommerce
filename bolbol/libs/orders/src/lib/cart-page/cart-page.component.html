@@ -1,0 +1,56 @@
+<div class="mt-4">
+  <div class="cart-page flex">
+    <div class="col-8 cart-page-item">
+      <p-button
+        styleClass="seeMore"
+        label="continue shopping"
+        icon="pi pi-chevron-left"
+        iconPos="left"
+        (onClick)="backHome()"
+      ></p-button>
+
+      <div class="mt-3">My Cart : {{ cartItems.length }} item(s)</div>
+      <div class="mt-3" style="color: green">
+        Shipping after payment, Delivery time from 1 week to 4
+      </div>
+      <div class="grid cart-item mt-3" *ngFor="let cartItem of cartItems">
+        <div class="cart-item-image col-2">
+          <img [src]="cartItem.product.image" />
+        </div>
+        <div class="cart-item-detail col-6">
+          <p>{{ cartItem.product.name }}</p>
+          <p style="color: #fba1b7">{{ cartItem.product.price | currency }}</p>
+          <p-button
+            (onClick)="deleteItem(cartItem)"
+            icon="pi pi-trash"
+            styleClass="p-button-rounded p-button-danger p-button-outlined"
+          ></p-button>
+        </div>
+
+        <div class="cart-item-quantity col-4 mt-2">
+          <p-inputNumber
+            [(ngModel)]="cartItem.quantity"
+            mode="decimal"
+            [showButtons]="true"
+            styleClass="p-input-number-input"
+            inputId="quantity"
+            [min]="0"
+            [max]="100"
+            (onInput)="updateCartQuantity($event, cartItem)"
+          >
+          </p-inputNumber>
+          <p class="mt-3">
+            SubTotal :
+            <span style="color: #fba1b7">
+              {{ cartItem.quantity * cartItem.product.price | currency }}
+            </span>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-4 mt-4 cart-page-summary">
+      <order-summary [isCart]="true"></order-summary>
+    </div>
+  </div>
+</div>

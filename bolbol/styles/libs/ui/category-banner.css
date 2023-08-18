@@ -1,0 +1,43 @@
+.category-banner {
+  margin-top: 3rem;
+  text-align: center;
+}
+.categories {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+  gap: 0.7rem;
+  flex-wrap: wrap;
+}
+.category {
+  cursor: pointer;
+  width: 9rem;
+  height: 5rem;
+  border-radius: 0.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+/* css for smaller screens */
+@media screen and (max-width: 760px) {
+  .category-banner {
+    margin-top: 1rem;
+  }
+  .category-banner h3 {
+    font-size: 0.6rem;
+  }
+  .categories {
+    margin-top: 0.8rem;
+  }
+  .category {
+    width: 4rem;
+    height: 2.5rem;
+    font-size: 0.5rem;
+    border-radius: 0.3rem;
+  }
+  .category i {
+    font-size: 0.5rem;
+  }
+}

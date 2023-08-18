@@ -1,0 +1,2514 @@
+{
+  "graph": {
+    "nodes": {
+      "ks-shop-e2e": {
+        "name": "ks-shop-e2e",
+        "type": "e2e",
+        "data": {
+          "name": "ks-shop-e2e",
+          "$schema": "../../node_modules/nx/schemas/project-schema.json",
+          "sourceRoot": "apps/ks-shop-e2e/src",
+          "projectType": "application",
+          "targets": {
+            "e2e": {
+              "inputs": [
+                "default",
+                "^production"
+              ],
+              "executor": "@nx/cypress:cypress",
+              "options": {
+                "cypressConfig": "apps/ks-shop-e2e/cypress.config.ts",
+                "devServerTarget": "ks-shop:serve:development",
+                "testingType": "e2e"
+              },
+              "configurations": {
+                "production": {
+                  "devServerTarget": "ks-shop:serve:production"
+                },
+                "ci": {
+                  "devServerTarget": "ks-shop:serve-static"
+                }
+              }
+            },
+            "lint": {
+              "inputs": [
+                "default",
+                "{workspaceRoot}/.eslintrc.json",
+                "{workspaceRoot}/.eslintignore"
+              ],
+              "executor": "@nx/linter:eslint",
+              "outputs": [
+                "{options.outputFile}"
+              ],
+              "options": {
+                "lintFilePatterns": [
+                  "apps/ks-shop-e2e/**/*.{js,ts}"
+                ]
+              },
+              "configurations": {}
+            }
+          },
+          "tags": [],
+          "implicitDependencies": [
+            "ks-shop"
+          ],
+          "root": "apps/ks-shop-e2e",
+          "files": [
+            {
+              "file": "apps/ks-shop-e2e/.eslintrc.json",
+              "hash": "14060216369337943343"
+            },
+            {
+              "file": "apps/ks-shop-e2e/cypress.config.ts",
+              "hash": "15414076024138857470",
+              "dependencies": [
+                {
+                  "source": "ks-shop-e2e",
+                  "target": "npm:cypress",
+                  "type": "static"
+                },
+                {
+                  "source": "ks-shop-e2e",
+                  "target": "npm:@nx/cypress",
+                  "type": "static"
+                }
+              ]
+            },
+            {
+              "file": "apps/ks-shop-e2e/project.json",
+              "hash": "16238856478726782025"
+            },
+            {
+              "file": "apps/ks-shop-e2e/src/e2e/app.cy.ts",
+              "hash": "2244002845781423262"
+            },
+            {
+              "file": "apps/ks-shop-e2e/src/fixtures/example.json",
+              "hash": "11614668686582597233"
+            },
+            {
+              "file": "apps/ks-shop-e2e/src/support/app.po.ts",
+              "hash": "11157016311132186162"
+            },
+            {
+              "file": "apps/ks-shop-e2e/src/support/commands.ts",
+              "hash": "7314691991044890572"
+            },
+            {
+              "file": "apps/ks-shop-e2e/src/support/e2e.ts",
+              "hash": "3666078656922506009"
+            },
+            {
+              "file": "apps/ks-shop-e2e/tsconfig.json",
+              "hash": "15439127571515986436"
+            }
+          ]
+        }
+      },
+      "ks-shop": {
+        "name": "ks-shop",
+        "type": "app",
+        "data": {
+          "name": "ks-shop",
+          "$schema": "../../node_modules/nx/schemas/project-schema.json",
+          "projectType": "application",
+          "prefix": "bolbol",
+          "sourceRoot": "apps/ks-shop/src",
+          "tags": [],
+          "targets": {
+            "build": {
+              "dependsOn": [
+                "^build"
+              ],
+              "inputs": [
+                "production",
+                "^production"
+              ],
+              "executor": "@angular-devkit/build-angular:browser",
+              "outputs": [
+                "{options.outputPath}"
+              ],
+              "options": {
+                "outputPath": "dist/apps/ks-shop",
+                "index": "apps/ks-shop/src/index.html",
+                "main": "apps/ks-shop/src/main.ts",
+                "polyfills": [
+                  "zone.js"
+                ],
+                "tsConfig": "apps/ks-shop/tsconfig.app.json",
+                "assets": [
+                  "apps/ks-shop/src/favicon.ico",
+                  "apps/ks-shop/src/assets"
+                ],
+                "styles": [
+                  "apps/ks-shop/src/styles.css"
+                ],
+                "scripts": []
+              },
+              "configurations": {
+                "production": {
+                  "budgets": [
+                    {
+                      "type": "initial",
+                      "maximumWarning": "500kb",
+                      "maximumError": "1mb"
+                    },
+                    {
+                      "type": "anyComponentStyle",
+                      "maximumWarning": "2kb",
+                      "maximumError": "4kb"
+                    }
+                  ],
+                  "outputHashing": "all"
+                },
+                "development": {
+                  "buildOptimizer": false,
+                  "optimization": false,
+                  "vendorChunk": true,
+                  "extractLicenses": false,
+                  "sourceMap": true,
+                  "namedChunks": true
+                }
+              },
+              "defaultConfiguration": "production"
+            },
+            "serve": {
+              "executor": "@angular-devkit/build-angular:dev-server",
+              "configurations": {
+                "production": {
+                  "browserTarget": "ks-shop:build:production"
+                },
+                "development": {
+                  "browserTarget": "ks-shop:build:development"
+                }
+              },
+              "defaultConfiguration": "development"
+            },
+            "extract-i18n": {
+              "executor": "@angular-devkit/build-angular:extract-i18n",
+              "options": {
+                "browserTarget": "ks-shop:build"
+              }
+            },
+            "lint": {
+              "inputs": [
+                "default",
+                "{workspaceRoot}/.eslintrc.json",
+                "{workspaceRoot}/.eslintignore"
+              ],
+              "executor": "@nx/linter:eslint",
+              "outputs": [
+                "{options.outputFile}"
+              ],
+              "options": {
+                "lintFilePatterns": [
+                  "apps/ks-shop/**/*.ts",
+                  "apps/ks-shop/**/*.html"
+                ]
+              },
+              "configurations": {}
+            },
+            "test": {
+              "inputs": [
+                "default",
+                "^production",
+                "{workspaceRoot}/jest.preset.js"
+              ],
+              "executor": "@nx/jest:jest",
+              "outputs": [
+                "{workspaceRoot}/coverage/{projectRoot}"
+              ],
+              "options": {
+                "jestConfig": "apps/ks-shop/jest.config.ts",
+                "passWithNoTests": true
+              },
+              "configurations": {
+                "ci": {
+                  "ci": true,
+                  "codeCoverage": true
+                }
+              }
+            },
+            "serve-static": {
+              "executor": "@nx/web:file-server",
+              "options": {
+                "buildTarget": "ks-shop:build"
+              }
+            }
+          },
+          "root": "apps/ks-shop",
+          "implicitDependencies": [],
+          "files": [
+            {
+              "file": "apps/ks-shop/.eslintrc.json",
+              "hash": "10698468308062507214"
+            },
+            {
+              "file": "apps/ks-shop/jest.config.ts",
+              "hash": "1159515301952628017"
+            },
+            {
+              "file": "apps/ks-shop/project.json",
+              "hash": "15504929338267953067"
+            },
+            {
+              "file": "apps/ks-shop/src/app/app.component.html",
+              "hash": "16294674612072771557"
+            },
+            {
+              "file": "apps/ks-shop/src/app/app.component.spec.ts",
+              "hash": "2679944457063788481",
+              "dependencies": [
+                {
+                  "source": "ks-shop",
+                  "target": "npm:@angular/core",
+                  "type": "static"
+                },
+                {
+                  "source": "ks-shop",
+                  "target": "npm:@angular/router",
+                  "type": "static"
+                }
+              ]
+            },
+            {
+              "file": "apps/ks-shop/src/app/app.component.ts",
+              "hash": "11988530108429961519",
+              "dependencies": [
+                {
+                  "source": "ks-shop",
+                  "target": "npm:@angular/core",
+                  "type": "static"
+                }
+              ]
+            },
+            {
+              "file": "apps/ks-shop/src/app/app.module.ts",
+              "hash": "15012077492168167151",
+              "dependencies": [
+                {
+                  "source": "ks-shop",
+                  "target": "ui",
+                  "type": "static"
+                },
+                {
+                  "source": "ks-shop",
+                  "target": "npm:@angular/core",
+                  "type": "static"
+                },
+                {
+                  "source": "ks-shop",
+                  "target": "npm:@angular/platform-browser",
+                  "type": "static"
+                },
+                {
+                  "source": "ks-shop",
+                  "target": "npm:@angular/router",
+                  "type": "static"
+                },
+                {
+                  "source": "ks-shop",
+                  "target": "npm:primeng",
+                  "type": "static"
+                },
+                {
+                  "source": "ks-shop",
+                  "target": "npm:@angular/forms",
+                  "type": "static"
+                },
+                {
+                  "source": "ks-shop",
+                  "target": "orders",
+                  "type": "static"
+                }
+              ]
+            },
+            {
+              "file": "apps/ks-shop/src/app/app.routes.ts",
+              "hash": "12537825986863904341",
+              "dependencies": [
+                {
+                  "source": "ks-shop",
+                  "target": "npm:@angular/router",
+                  "type": "static"
+                }
+              ]
+            },
+            {
+              "file": "apps/ks-shop/src/app/pages/cart-page/cart-page.component.html",
+              "hash": "8485424924558714598"
+            },
+            {
+              "file": "apps/ks-shop/src/app/pages/cart-page/cart-page.component.ts",
+              "hash": "18012302305574431022",
+              "dependencies": [
+                {
+                  "source": "ks-shop",
+                  "target": "npm:@angular/core",
+                  "type": "static"
+                },
+                {
+                  "source": "ks-shop",
+                  "target": "npm:@angular/router",
+                  "type": "static"
+                },
+                {
+                  "source": "ks-shop",
+                  "target": "npm:libs/models/cart",
+                  "type": "static"
+                },
+                {
+                  "source": "ks-shop",
+                  "target": "orders",
+                  "type": "static"
+                },
+                {
+                  "source": "ks-shop",
+                  "target": "products",
+                  "type": "static"
+                }
+              ]
+            },
+            {
+              "file": "apps/ks-shop/src/app/pages/home-page/home-page.component.html",
+              "hash": "13824881730970460812"
+            },
+            {
+              "file": "apps/ks-shop/src/app/pages/home-page/home-page.component.ts",
+              "hash": "15512296697119266940",
+              "dependencies": [
+                {
+                  "source": "ks-shop",
+                  "target": "npm:@angular/core",
+                  "type": "static"
+                }
+              ]
+            },
+            {
+              "file": "apps/ks-shop/src/app/pages/product-detail/product-detail.component.html",
+              "hash": "8153045179368147354"
+            },
+            {
+              "file": "apps/ks-shop/src/app/pages/product-detail/product-detail.component.ts",
+              "hash": "8733581375009593812",
+              "dependencies": [
+                {
+                  "source": "ks-shop",
+                  "target": "npm:@angular/core",
+                  "type": "static"
+                },
+                {
+                  "source": "ks-shop",
+                  "target": "npm:@angular/router",
+                  "type": "static"
+                },
+                {
+                  "source": "ks-shop",
+                  "target": "npm:libs/models/cart",
+                  "type": "static"
+                },
+                {
+                  "source": "ks-shop",
+                  "target": "npm:libs/models/product",
+                  "type": "static"
+                },
+                {
+                  "source": "ks-shop",
+                  "target": "orders",
+                  "type": "static"
+                },
+                {
+                  "source": "ks-shop",
+                  "target": "products",
+                  "type": "static"
+                }
+              ]
+            },
+            {
+              "file": "apps/ks-shop/src/app/pages/product-list/product-list.component.html",
+              "hash": "10940927529723548850"
+            },
+            {
+              "file": "apps/ks-shop/src/app/pages/product-list/product-list.component.ts",
+              "hash": "14763094485571302214",
+              "dependencies": [
+                {
+                  "source": "ks-shop",
+                  "target": "npm:@angular/core",
+                  "type": "static"
+                },
+                {
+                  "source": "ks-shop",
+                  "target": "npm:@angular/router",
+                  "type": "static"
+                },
+                {
+                  "source": "ks-shop",
+                  "target": "products",
+                  "type": "static"
+                },
+                {
+                  "source": "ks-shop",
+                  "target": "npm:libs/models/product",
+                  "type": "static"
+                }
+              ]
+            },
+            {
+              "file": "apps/ks-shop/src/app/shared/footer/footer.component.html",
+              "hash": "8907081677685358515"
+            },
+            {
+              "file": "apps/ks-shop/src/app/shared/footer/footer.component.ts",
+              "hash": "1254453770874106336",
+              "dependencies": [
+                {
+                  "source": "ks-shop",
+                  "target": "npm:@angular/core",
+                  "type": "static"
+                }
+              ]
+            },
+            {
+              "file": "apps/ks-shop/src/app/shared/header/header.component.html",
+              "hash": "6820312034664342000"
+            },
+            {
+              "file": "apps/ks-shop/src/app/shared/header/header.component.ts",
+              "hash": "17867080406335494700",
+              "dependencies": [
+                {
+                  "source": "ks-shop",
+                  "target": "orders",
+                  "type": "static"
+                },
+                {
+                  "source": "ks-shop",
+                  "target": "npm:@angular/core",
+                  "type": "static"
+                }
+              ]
+            },
+            {
+              "file": "apps/ks-shop/src/assets/.gitkeep",
+              "hash": "3244421341483603138"
+            },
+            {
+              "file": "apps/ks-shop/src/assets/005 banner-image.svg",
+              "hash": "16941063100639956583"
+            },
+            {
+              "file": "apps/ks-shop/src/assets/logo.png",
+              "hash": "2990297166967528588"
+            },
+            {
+              "file": "apps/ks-shop/src/favicon.ico",
+              "hash": "9303420814833116677"
+            },
+            {
+              "file": "apps/ks-shop/src/index.html",
+              "hash": "9148449302475828065"
+            },
+            {
+              "file": "apps/ks-shop/src/main.ts",
+              "hash": "14191774545949582757",
+              "dependencies": [
+                {
+                  "source": "ks-shop",
+                  "target": "npm:@angular/platform-browser-dynamic",
+                  "type": "static"
+                }
+              ]
+            },
+            {
+              "file": "apps/ks-shop/src/styles.css",
+              "hash": "3885263715509716923"
+            },
+            {
+              "file": "apps/ks-shop/src/test-setup.ts",
+              "hash": "12935735732682149507",
+              "dependencies": [
+                {
+                  "source": "ks-shop",
+                  "target": "npm:jest-preset-angular",
+                  "type": "static"
+                }
+              ]
+            },
+            {
+              "file": "apps/ks-shop/tsconfig.app.json",
+              "hash": "8365644956319658761"
+            },
+            {
+              "file": "apps/ks-shop/tsconfig.editor.json",
+              "hash": "17511610827034788226"
+            },
+            {
+              "file": "apps/ks-shop/tsconfig.json",
+              "hash": "12094030803572703611"
+            },
+            {
+              "file": "apps/ks-shop/tsconfig.spec.json",
+              "hash": "2927375835638640771"
+            }
+          ]
+        }
+      },
+      "admin-e2e": {
+        "name": "admin-e2e",
+        "type": "e2e",
+        "data": {
+          "name": "admin-e2e",
+          "$schema": "../../node_modules/nx/schemas/project-schema.json",
+          "sourceRoot": "apps/admin-e2e/src",
+          "projectType": "application",
+          "targets": {
+            "e2e": {
+              "inputs": [
+                "default",
+                "^production"
+              ],
+              "executor": "@nx/cypress:cypress",
+              "options": {
+                "cypressConfig": "apps/admin-e2e/cypress.config.ts",
+                "devServerTarget": "admin:serve:development",
+                "testingType": "e2e"
+              },
+              "configurations": {
+                "production": {
+                  "devServerTarget": "admin:serve:production"
+                },
+                "ci": {
+                  "devServerTarget": "admin:serve-static"
+                }
+              }
+            },
+            "lint": {
+              "inputs": [
+                "default",
+                "{workspaceRoot}/.eslintrc.json",
+                "{workspaceRoot}/.eslintignore"
+              ],
+              "executor": "@nx/linter:eslint",
+              "outputs": [
+                "{options.outputFile}"
+              ],
+              "options": {
+                "lintFilePatterns": [
+                  "apps/admin-e2e/**/*.{js,ts}"
+                ]
+              },
+              "configurations": {}
+            }
+          },
+          "tags": [],
+          "implicitDependencies": [
+            "admin"
+          ],
+          "root": "apps/admin-e2e",
+          "files": [
+            {
+              "file": "apps/admin-e2e/.eslintrc.json",
+              "hash": "14060216369337943343"
+            },
+            {
+              "file": "apps/admin-e2e/cypress.config.ts",
+              "hash": "15414076024138857470",
+              "dependencies": [
+                {
+                  "source": "admin-e2e",
+                  "target": "npm:cypress",
+                  "type": "static"
+                },
+                {
+                  "source": "admin-e2e",
+                  "target": "npm:@nx/cypress",
+                  "type": "static"
+                }
+              ]
+            },
+            {
+              "file": "apps/admin-e2e/project.json",
+              "hash": "919647049197037510"
+            },
+            {
+              "file": "apps/admin-e2e/src/e2e/app.cy.ts",
+              "hash": "16884771756213499868"
+            },
+            {
+              "file": "apps/admin-e2e/src/fixtures/example.json",
+              "hash": "11614668686582597233"
+            },
+            {
+              "file": "apps/admin-e2e/src/support/app.po.ts",
+              "hash": "11157016311132186162"
+            },
+            {
+              "file": "apps/admin-e2e/src/support/commands.ts",
+              "hash": "7314691991044890572"
+            },
+            {
+              "file": "apps/admin-e2e/src/support/e2e.ts",
+              "hash": "3666078656922506009"
+            },
+            {
+              "file": "apps/admin-e2e/tsconfig.json",
+              "hash": "15439127571515986436"
+            }
+          ]
+        }
+      },
+      "admin": {
+        "name": "admin",
+        "type": "app",
+        "data": {
+          "name": "admin",
+          "$schema": "../../node_modules/nx/schemas/project-schema.json",
+          "projectType": "application",
+          "prefix": "bolbol",
+          "sourceRoot": "apps/admin/src",
+          "tags": [],
+          "targets": {
+            "build": {
+              "dependsOn": [
+                "^build"
+              ],
+              "inputs": [
+                "production",
+                "^production"
+              ],
+              "executor": "@angular-devkit/build-angular:browser",
+              "outputs": [
+                "{options.outputPath}"
+              ],
+              "options": {
+                "outputPath": "dist/apps/admin",
+                "index": "apps/admin/src/index.html",
+                "main": "apps/admin/src/main.ts",
+                "polyfills": [
+                  "zone.js"
+                ],
+                "tsConfig": "apps/admin/tsconfig.app.json",
+                "assets": [
+                  "apps/admin/src/favicon.ico",
+                  "apps/admin/src/assets"
+                ],
+                "styles": [
+                  "apps/admin/src/styles.css"
+                ],
+                "scripts": []
+              },
+              "configurations": {
+                "production": {
+                  "budgets": [
+                    {
+                      "type": "initial",
+                      "maximumWarning": "500kb",
+                      "maximumError": "1mb"
+                    },
+                    {
+                      "type": "anyComponentStyle",
+                      "maximumWarning": "2kb",
+                      "maximumError": "4kb"
+                    }
+                  ],
+                  "outputHashing": "all"
+                },
+                "development": {
+                  "buildOptimizer": false,
+                  "optimization": false,
+                  "vendorChunk": true,
+                  "extractLicenses": false,
+                  "sourceMap": true,
+                  "namedChunks": true
+                }
+              },
+              "defaultConfiguration": "production"
+            },
+            "serve": {
+              "executor": "@angular-devkit/build-angular:dev-server",
+              "configurations": {
+                "production": {
+                  "browserTarget": "admin:build:production"
+                },
+                "development": {
+                  "browserTarget": "admin:build:development"
+                }
+              },
+              "defaultConfiguration": "development"
+            },
+            "extract-i18n": {
+              "executor": "@angular-devkit/build-angular:extract-i18n",
+              "options": {
+                "browserTarget": "admin:build"
+              }
+            },
+            "lint": {
+              "inputs": [
+                "default",
+                "{workspaceRoot}/.eslintrc.json",
+                "{workspaceRoot}/.eslintignore"
+              ],
+              "executor": "@nx/linter:eslint",
+              "outputs": [
+                "{options.outputFile}"
+              ],
+              "options": {
+                "lintFilePatterns": [
+                  "apps/admin/**/*.ts",
+                  "apps/admin/**/*.html"
+                ]
+              },
+              "configurations": {}
+            },
+            "test": {
+              "inputs": [
+                "default",
+                "^production",
+                "{workspaceRoot}/jest.preset.js"
+              ],
+              "executor": "@nx/jest:jest",
+              "outputs": [
+                "{workspaceRoot}/coverage/{projectRoot}"
+              ],
+              "options": {
+                "jestConfig": "apps/admin/jest.config.ts",
+                "passWithNoTests": true
+              },
+              "configurations": {
+                "ci": {
+                  "ci": true,
+                  "codeCoverage": true
+                }
+              }
+            },
+            "serve-static": {
+              "executor": "@nx/web:file-server",
+              "options": {
+                "buildTarget": "admin:build"
+              }
+            }
+          },
+          "root": "apps/admin",
+          "implicitDependencies": [],
+          "files": [
+            {
+              "file": "apps/admin/.eslintrc.json",
+              "hash": "15347789327575738221"
+            },
+            {
+              "file": "apps/admin/jest.config.ts",
+              "hash": "5232312042154059799"
+            },
+            {
+              "file": "apps/admin/project.json",
+              "hash": "15821812368355250979"
+            },
+            {
+              "file": "apps/admin/src/app/app.component.html",
+              "hash": "11270564087924370788"
+            },
+            {
+              "file": "apps/admin/src/app/app.component.spec.ts",
+              "hash": "10560955460944539826",
+              "dependencies": [
+                {
+                  "source": "admin",
+                  "target": "npm:@angular/core",
+                  "type": "static"
+                },
+                {
+                  "source": "admin",
+                  "target": "npm:@angular/router",
+                  "type": "static"
+                }
+              ]
+            },
+            {
+              "file": "apps/admin/src/app/app.component.ts",
+              "hash": "2654949917632355039",
+              "dependencies": [
+                {
+                  "source": "admin",
+                  "target": "npm:@angular/core",
+                  "type": "static"
+                }
+              ]
+            },
+            {
+              "file": "apps/admin/src/app/app.module.ts",
+              "hash": "2506617914367187850",
+              "dependencies": [
+                {
+                  "source": "admin",
+                  "target": "npm:@angular/common",
+                  "type": "static"
+                },
+                {
+                  "source": "admin",
+                  "target": "npm:@angular/core",
+                  "type": "static"
+                },
+                {
+                  "source": "admin",
+                  "target": "npm:@angular/platform-browser",
+                  "type": "static"
+                },
+                {
+                  "source": "admin",
+                  "target": "npm:@angular/router",
+                  "type": "static"
+                },
+                {
+                  "source": "admin",
+                  "target": "npm:primeng",
+                  "type": "static"
+                },
+                {
+                  "source": "admin",
+                  "target": "products",
+                  "type": "static"
+                },
+                {
+                  "source": "admin",
+                  "target": "npm:@angular/forms",
+                  "type": "static"
+                },
+                {
+                  "source": "admin",
+                  "target": "users",
+                  "type": "static"
+                }
+              ]
+            },
+            {
+              "file": "apps/admin/src/app/app.routes.ts",
+              "hash": "1537016349053733571",
+              "dependencies": [
+                {
+                  "source": "admin",
+                  "target": "users",
+                  "type": "static"
+                },
+                {
+                  "source": "admin",
+                  "target": "npm:@angular/router",
+                  "type": "static"
+                }
+              ]
+            },
+            {
+              "file": "apps/admin/src/app/pages/categories/categories.component.html",
+              "hash": "11959237155878204042"
+            },
+            {
+              "file": "apps/admin/src/app/pages/categories/categories.component.ts",
+              "hash": "16239633376098143148",
+              "dependencies": [
+                {
+                  "source": "admin",
+                  "target": "npm:libs/models/category",
+                  "type": "static"
+                },
+                {
+                  "source": "admin",
+                  "target": "products",
+                  "type": "static"
+                },
+                {
+                  "source": "admin",
+                  "target": "npm:@angular/core",
+                  "type": "static"
+                },
+                {
+                  "source": "admin",
+                  "target": "npm:primeng",
+                  "type": "static"
+                },
+                {
+                  "source": "admin",
+                  "target": "npm:@angular/router",
+                  "type": "static"
+                }
+              ]
+            },
+            {
+              "file": "apps/admin/src/app/pages/category-form/category-form.component.html",
+              "hash": "18192666696175875820"
+            },
+            {
+              "file": "apps/admin/src/app/pages/category-form/category-form.component.ts",
+              "hash": "4510242598016031884",
+              "dependencies": [
+                {
+                  "source": "admin",
+                  "target": "npm:@angular/common",
+                  "type": "static"
+                },
+                {
+                  "source": "admin",
+                  "target": "npm:@angular/core",
+                  "type": "static"
+                },
+                {
+                  "source": "admin",
+                  "target": "npm:@angular/forms",
+                  "type": "static"
+                },
+                {
+                  "source": "admin",
+                  "target": "npm:@angular/router",
+                  "type": "static"
+                },
+                {
+                  "source": "admin",
+                  "target": "npm:libs/models/category",
+                  "type": "static"
+                },
+                {
+                  "source": "admin",
+                  "target": "products",
+                  "type": "static"
+                },
+                {
+                  "source": "admin",
+                  "target": "npm:primeng",
+                  "type": "static"
+                }
+              ]
+            },
+            {
+              "file": "apps/admin/src/app/pages/dashboard/dashboard.component.html",
+              "hash": "2296400967895315682"
+            },
+            {
+              "file": "apps/admin/src/app/pages/dashboard/dashboard.component.ts",
+              "hash": "2531480729416596928",
+              "dependencies": [
+                {
+                  "source": "admin",
+                  "target": "npm:@angular/common",
+                  "type": "static"
+                },
+                {
+                  "source": "admin",
+                  "target": "npm:@angular/core",
+                  "type": "static"
+                }
+              ]
+            },
+            {
+              "file": "apps/admin/src/app/pages/order-detail/order-detail.component.html",
+              "hash": "15105202189559824678"
+            },
+            {
+              "file": "apps/admin/src/app/pages/order-detail/order-detail.component.ts",
+              "hash": "848390000948447598",
+              "dependencies": [
+                {
+                  "source": "admin",
+                  "target": "npm:@angular/core",
+                  "type": "static"
+                },
+                {
+                  "source": "admin",
+                  "target": "npm:@angular/router",
+                  "type": "static"
+                },
+                {
+                  "source": "admin",
+                  "target": "npm:libs/models/order",
+                  "type": "static"
+                },
+                {
+                  "source": "admin",
+                  "target": "orders",
+                  "type": "static"
+                }
+              ]
+            },
+            {
+              "file": "apps/admin/src/app/pages/orders/orders.component.html",
+              "hash": "14405006914523184429"
+            },
+            {
+              "file": "apps/admin/src/app/pages/orders/orders.component.ts",
+              "hash": "2249717211719678369",
+              "dependencies": [
+                {
+                  "source": "admin",
+                  "target": "orders",
+                  "type": "static"
+                },
+                {
+                  "source": "admin",
+                  "target": "npm:./../../../../../../libs/models/order",
+                  "type": "static"
+                },
+                {
+                  "source": "admin",
+                  "target": "npm:@angular/core",
+                  "type": "static"
+                },
+                {
+                  "source": "admin",
+                  "target": "npm:@angular/router",
+                  "type": "static"
+                }
+              ]
+            },
+            {
+              "file": "apps/admin/src/app/pages/product-form/product-form.component.html",
+              "hash": "1733059509418803091"
+            },
+            {
+              "file": "apps/admin/src/app/pages/product-form/product-form.component.ts",
+              "hash": "6407565188599443909",
+              "dependencies": [
+                {
+                  "source": "admin",
+                  "target": "npm:@angular/router",
+                  "type": "static"
+                },
+                {
+                  "source": "admin",
+                  "target": "npm:@angular/common",
+                  "type": "static"
+                },
+                {
+                  "source": "admin",
+                  "target": "npm:./../../../../../../libs/models/product",
+                  "type": "static"
+                },
+                {
+                  "source": "admin",
+                  "target": "products",
+                  "type": "static"
+                },
+                {
+                  "source": "admin",
+                  "target": "npm:@angular/core",
+                  "type": "static"
+                },
+                {
+                  "source": "admin",
+                  "target": "npm:@angular/forms",
+                  "type": "static"
+                },
+                {
+                  "source": "admin",
+                  "target": "npm:primeng",
+                  "type": "static"
+                }
+              ]
+            },
+            {
+              "file": "apps/admin/src/app/pages/products/products.component.html",
+              "hash": "1697448498390481143"
+            },
+            {
+              "file": "apps/admin/src/app/pages/products/products.component.ts",
+              "hash": "11167512758637881573",
+              "dependencies": [
+                {
+                  "source": "admin",
+                  "target": "products",
+                  "type": "static"
+                },
+                {
+                  "source": "admin",
+                  "target": "npm:libs/models/product",
+                  "type": "static"
+                },
+                {
+                  "source": "admin",
+                  "target": "npm:@angular/core",
+                  "type": "static"
+                },
+                {
+                  "source": "admin",
+                  "target": "npm:@angular/router",
+                  "type": "static"
+                },
+                {
+                  "source": "admin",
+                  "target": "npm:primeng",
+                  "type": "static"
+                }
+              ]
+            },
+            {
+              "file": "apps/admin/src/app/pages/user-form/user-form.component.html",
+              "hash": "2465858252615794632"
+            },
+            {
+              "file": "apps/admin/src/app/pages/user-form/user-form.component.ts",
+              "hash": "3967926446696128573",
+              "dependencies": [
+                {
+                  "source": "admin",
+                  "target": "npm:@angular/core",
+                  "type": "static"
+                },
+                {
+                  "source": "admin",
+                  "target": "npm:@angular/common",
+                  "type": "static"
+                },
+                {
+                  "source": "admin",
+                  "target": "npm:@angular/forms",
+                  "type": "static"
+                },
+                {
+                  "source": "admin",
+                  "target": "npm:@angular/router",
+                  "type": "static"
+                },
+                {
+                  "source": "admin",
+                  "target": "npm:libs/models/user",
+                  "type": "static"
+                },
+                {
+                  "source": "admin",
+                  "target": "users",
+                  "type": "static"
+                },
+                {
+                  "source": "admin",
+                  "target": "npm:primeng",
+                  "type": "static"
+                },
+                {
+                  "source": "admin",
+                  "target": "npm:i18n-iso-countries",
+                  "type": "static"
+                }
+              ]
+            },
+            {
+              "file": "apps/admin/src/app/pages/users/users.component.html",
+              "hash": "16232449439264057614"
+            },
+            {
+              "file": "apps/admin/src/app/pages/users/users.component.ts",
+              "hash": "6362758787735626531",
+              "dependencies": [
+                {
+                  "source": "admin",
+                  "target": "users",
+                  "type": "static"
+                },
+                {
+                  "source": "admin",
+                  "target": "npm:./../../../../../../libs/models/user",
+                  "type": "static"
+                },
+                {
+                  "source": "admin",
+                  "target": "npm:@angular/core",
+                  "type": "static"
+                },
+                {
+                  "source": "admin",
+                  "target": "npm:@angular/router",
+                  "type": "static"
+                },
+                {
+                  "source": "admin",
+                  "target": "npm:primeng",
+                  "type": "static"
+                }
+              ]
+            },
+            {
+              "file": "apps/admin/src/app/shared/shell/shell.component.html",
+              "hash": "10485733042663631835"
+            },
+            {
+              "file": "apps/admin/src/app/shared/shell/shell.component.ts",
+              "hash": "16654873940583419195",
+              "dependencies": [
+                {
+                  "source": "admin",
+                  "target": "npm:@angular/core",
+                  "type": "static"
+                }
+              ]
+            },
+            {
+              "file": "apps/admin/src/app/shared/sidebar/sidebar.component.html",
+              "hash": "18298996792850508663"
+            },
+            {
+              "file": "apps/admin/src/app/shared/sidebar/sidebar.component.ts",
+              "hash": "3792488238565702841",
+              "dependencies": [
+                {
+                  "source": "admin",
+                  "target": "npm:@angular/core",
+                  "type": "static"
+                },
+                {
+                  "source": "admin",
+                  "target": "users",
+                  "type": "static"
+                }
+              ]
+            },
+            {
+              "file": "apps/admin/src/assets/.gitkeep",
+              "hash": "3244421341483603138"
+            },
+            {
+              "file": "apps/admin/src/assets/login-photo.png",
+              "hash": "8350612803233809199"
+            },
+            {
+              "file": "apps/admin/src/assets/logo.png",
+              "hash": "2990297166967528588"
+            },
+            {
+              "file": "apps/admin/src/index.html",
+              "hash": "3578810696348391637"
+            },
+            {
+              "file": "apps/admin/src/main.ts",
+              "hash": "14191774545949582757",
+              "dependencies": [
+                {
+                  "source": "admin",
+                  "target": "npm:@angular/platform-browser-dynamic",
+                  "type": "static"
+                }
+              ]
+            },
+            {
+              "file": "apps/admin/src/styles.css",
+              "hash": "9346431388045201587"
+            },
+            {
+              "file": "apps/admin/src/test-setup.ts",
+              "hash": "12935735732682149507",
+              "dependencies": [
+                {
+                  "source": "admin",
+                  "target": "npm:jest-preset-angular",
+                  "type": "static"
+                }
+              ]
+            },
+            {
+              "file": "apps/admin/tsconfig.app.json",
+              "hash": "8365644956319658761"
+            },
+            {
+              "file": "apps/admin/tsconfig.editor.json",
+              "hash": "17511610827034788226"
+            },
+            {
+              "file": "apps/admin/tsconfig.json",
+              "hash": "12094030803572703611"
+            },
+            {
+              "file": "apps/admin/tsconfig.spec.json",
+              "hash": "2927375835638640771"
+            }
+          ]
+        }
+      },
+      "ui": {
+        "name": "ui",
+        "type": "lib",
+        "data": {
+          "name": "ui",
+          "$schema": "../../node_modules/nx/schemas/project-schema.json",
+          "sourceRoot": "libs/ui/src",
+          "prefix": "bolbol",
+          "tags": [],
+          "projectType": "library",
+          "targets": {
+            "test": {
+              "inputs": [
+                "default",
+                "^production",
+                "{workspaceRoot}/jest.preset.js"
+              ],
+              "executor": "@nx/jest:jest",
+              "outputs": [
+                "{workspaceRoot}/coverage/{projectRoot}"
+              ],
+              "options": {
+                "jestConfig": "libs/ui/jest.config.ts",
+                "passWithNoTests": true
+              },
+              "configurations": {
+                "ci": {
+                  "ci": true,
+                  "codeCoverage": true
+                }
+              }
+            },
+            "lint": {
+              "inputs": [
+                "default",
+                "{workspaceRoot}/.eslintrc.json",
+                "{workspaceRoot}/.eslintignore"
+              ],
+              "executor": "@nx/linter:eslint",
+              "outputs": [
+                "{options.outputFile}"
+              ],
+              "options": {
+                "lintFilePatterns": [
+                  "libs/ui/**/*.ts",
+                  "libs/ui/**/*.html"
+                ]
+              },
+              "configurations": {}
+            }
+          },
+          "root": "libs/ui",
+          "implicitDependencies": [],
+          "files": [
+            {
+              "file": "libs/ui/.eslintrc.json",
+              "hash": "9683775305883674592"
+            },
+            {
+              "file": "libs/ui/jest.config.ts",
+              "hash": "12936633822377231267"
+            },
+            {
+              "file": "libs/ui/project.json",
+              "hash": "2974781314138367731"
+            },
+            {
+              "file": "libs/ui/README.md",
+              "hash": "3098996868279451883"
+            },
+            {
+              "file": "libs/ui/src/index.ts",
+              "hash": "10528677981617868860"
+            },
+            {
+              "file": "libs/ui/src/lib/banner/banner.component.html",
+              "hash": "5193268429499882360"
+            },
+            {
+              "file": "libs/ui/src/lib/banner/banner.component.ts",
+              "hash": "7448583451192082540",
+              "dependencies": [
+                {
+                  "source": "ui",
+                  "target": "npm:@angular/core",
+                  "type": "static"
+                }
+              ]
+            },
+            {
+              "file": "libs/ui/src/lib/categories/category-banner/category-banner.component.html",
+              "hash": "16462263308473792009"
+            },
+            {
+              "file": "libs/ui/src/lib/categories/category-banner/category-banner.component.ts",
+              "hash": "9086534053978140083",
+              "dependencies": [
+                {
+                  "source": "ui",
+                  "target": "npm:@angular/core",
+                  "type": "static"
+                },
+                {
+                  "source": "ui",
+                  "target": "products",
+                  "type": "static"
+                }
+              ]
+            },
+            {
+              "file": "libs/ui/src/lib/featured-products/featured-products.component.html",
+              "hash": "12825692853448452905"
+            },
+            {
+              "file": "libs/ui/src/lib/featured-products/featured-products.component.ts",
+              "hash": "812809925080600708",
+              "dependencies": [
+                {
+                  "source": "ui",
+                  "target": "products",
+                  "type": "static"
+                },
+                {
+                  "source": "ui",
+                  "target": "npm:@angular/core",
+                  "type": "static"
+                },
+                {
+                  "source": "ui",
+                  "target": "npm:libs/models/product",
+                  "type": "static"
+                }
+              ]
+            },
+            {
+              "file": "libs/ui/src/lib/gallery/gallery.component.html",
+              "hash": "5350292990080211691"
+            },
+            {
+              "file": "libs/ui/src/lib/gallery/gallery.component.ts",
+              "hash": "15099145892102791693",
+              "dependencies": [
+                {
+                  "source": "ui",
+                  "target": "npm:@angular/core",
+                  "type": "static"
+                }
+              ]
+            },
+            {
+              "file": "libs/ui/src/lib/product-item/product-item.component.html",
+              "hash": "16913246623315251500"
+            },
+            {
+              "file": "libs/ui/src/lib/product-item/product-item.component.ts",
+              "hash": "7230299322858938355",
+              "dependencies": [
+                {
+                  "source": "ui",
+                  "target": "orders",
+                  "type": "static"
+                },
+                {
+                  "source": "ui",
+                  "target": "npm:./../../../../models/product",
+                  "type": "static"
+                },
+                {
+                  "source": "ui",
+                  "target": "npm:@angular/core",
+                  "type": "static"
+                },
+                {
+                  "source": "ui",
+                  "target": "npm:libs/models/cart",
+                  "type": "static"
+                }
+              ]
+            },
+            {
+              "file": "libs/ui/src/lib/ui.module.ts",
+              "hash": "4185890798053853019",
+              "dependencies": [
+                {
+                  "source": "ui",
+                  "target": "ks-shop",
+                  "type": "static"
+                },
+                {
+                  "source": "ui",
+                  "target": "npm:@angular/router",
+                  "type": "static"
+                },
+                {
+                  "source": "ui",
+                  "target": "npm:@angular/common",
+                  "type": "static"
+                },
+                {
+                  "source": "ui",
+                  "target": "npm:@angular/core",
+                  "type": "static"
+                },
+                {
+                  "source": "ui",
+                  "target": "npm:primeng",
+                  "type": "static"
+                }
+              ]
+            },
+            {
+              "file": "libs/ui/src/test-setup.ts",
+              "hash": "12935735732682149507",
+              "dependencies": [
+                {
+                  "source": "ui",
+                  "target": "npm:jest-preset-angular",
+                  "type": "static"
+                }
+              ]
+            },
+            {
+              "file": "libs/ui/tsconfig.json",
+              "hash": "15487755565970508470"
+            },
+            {
+              "file": "libs/ui/tsconfig.lib.json",
+              "hash": "5796668385415907511"
+            },
+            {
+              "file": "libs/ui/tsconfig.spec.json",
+              "hash": "2927375835638640771"
+            }
+          ]
+        }
+      },
+      "products": {
+        "name": "products",
+        "type": "lib",
+        "data": {
+          "name": "products",
+          "$schema": "../../node_modules/nx/schemas/project-schema.json",
+          "sourceRoot": "libs/products/src",
+          "prefix": "products",
+          "tags": [],
+          "projectType": "library",
+          "targets": {
+            "build": {
+              "dependsOn": [
+                "^build"
+              ],
+              "inputs": [
+                "production",
+                "^production"
+              ],
+              "executor": "@nx/angular:ng-packagr-lite",
+              "outputs": [
+                "{workspaceRoot}/dist/{projectRoot}"
+              ],
+              "options": {
+                "project": "libs/products/ng-package.json"
+              },
+              "configurations": {
+                "production": {
+                  "tsConfig": "libs/products/tsconfig.lib.prod.json"
+                },
+                "development": {
+                  "tsConfig": "libs/products/tsconfig.lib.json"
+                }
+              },
+              "defaultConfiguration": "production"
+            },
+            "test": {
+              "inputs": [
+                "default",
+                "^production",
+                "{workspaceRoot}/jest.preset.js"
+              ],
+              "executor": "@nx/jest:jest",
+              "outputs": [
+                "{workspaceRoot}/coverage/{projectRoot}"
+              ],
+              "options": {
+                "jestConfig": "libs/products/jest.config.ts",
+                "passWithNoTests": true
+              },
+              "configurations": {
+                "ci": {
+                  "ci": true,
+                  "codeCoverage": true
+                }
+              }
+            },
+            "lint": {
+              "inputs": [
+                "default",
+                "{workspaceRoot}/.eslintrc.json",
+                "{workspaceRoot}/.eslintignore"
+              ],
+              "executor": "@nx/linter:eslint",
+              "outputs": [
+                "{options.outputFile}"
+              ],
+              "options": {
+                "lintFilePatterns": [
+                  "libs/products/**/*.ts",
+                  "libs/products/**/*.html"
+                ]
+              },
+              "configurations": {}
+            }
+          },
+          "root": "libs/products",
+          "implicitDependencies": [],
+          "files": [
+            {
+              "file": "libs/products/.eslintrc.json",
+              "hash": "1965053078376629586"
+            },
+            {
+              "file": "libs/products/jest.config.ts",
+              "hash": "4454510999126550"
+            },
+            {
+              "file": "libs/products/ng-package.json",
+              "hash": "14954369895422112350"
+            },
+            {
+              "file": "libs/products/package.json",
+              "hash": "5450070553426436972",
+              "dependencies": [
+                {
+                  "source": "products",
+                  "target": "npm:tslib",
+                  "type": "static"
+                },
+                {
+                  "source": "products",
+                  "target": "npm:@angular/common",
+                  "type": "static"
+                },
+                {
+                  "source": "products",
+                  "target": "npm:@angular/core",
+                  "type": "static"
+                }
+              ]
+            },
+            {
+              "file": "libs/products/project.json",
+              "hash": "14818669978073570757"
+            },
+            {
+              "file": "libs/products/README.md",
+              "hash": "13878683060298870260"
+            },
+            {
+              "file": "libs/products/src/index.ts",
+              "hash": "15288434144067305740",
+              "dependencies": [
+                {
+                  "source": "products",
+                  "target": "npm:../../models/category",
+                  "type": "static"
+                }
+              ]
+            },
+            {
+              "file": "libs/products/src/lib/lib.routes.ts",
+              "hash": "2609378527620929961",
+              "dependencies": [
+                {
+                  "source": "products",
+                  "target": "npm:@angular/router",
+                  "type": "static"
+                }
+              ]
+            },
+            {
+              "file": "libs/products/src/lib/products.module.ts",
+              "hash": "7083364752397890850",
+              "dependencies": [
+                {
+                  "source": "products",
+                  "target": "npm:@angular/core",
+                  "type": "static"
+                },
+                {
+                  "source": "products",
+                  "target": "npm:@angular/common",
+                  "type": "static"
+                },
+                {
+                  "source": "products",
+                  "target": "npm:@angular/router",
+                  "type": "static"
+                }
+              ]
+            },
+            {
+              "file": "libs/products/src/lib/services/categories.service.ts",
+              "hash": "13723613265265492604",
+              "dependencies": [
+                {
+                  "source": "products",
+                  "target": "npm:./../../../../models/category",
+                  "type": "static"
+                },
+                {
+                  "source": "products",
+                  "target": "npm:@angular/core",
+                  "type": "static"
+                },
+                {
+                  "source": "products",
+                  "target": "npm:@angular/common",
+                  "type": "static"
+                },
+                {
+                  "source": "products",
+                  "target": "npm:rxjs",
+                  "type": "static"
+                }
+              ]
+            },
+            {
+              "file": "libs/products/src/lib/services/products.service.ts",
+              "hash": "12982956215183109139",
+              "dependencies": [
+                {
+                  "source": "products",
+                  "target": "npm:./../../../../models/product",
+                  "type": "static"
+                },
+                {
+                  "source": "products",
+                  "target": "npm:@angular/core",
+                  "type": "static"
+                },
+                {
+                  "source": "products",
+                  "target": "npm:@angular/common",
+                  "type": "static"
+                },
+                {
+                  "source": "products",
+                  "target": "npm:rxjs",
+                  "type": "static"
+                }
+              ]
+            },
+            {
+              "file": "libs/products/src/test-setup.ts",
+              "hash": "12935735732682149507",
+              "dependencies": [
+                {
+                  "source": "products",
+                  "target": "npm:jest-preset-angular",
+                  "type": "static"
+                }
+              ]
+            },
+            {
+              "file": "libs/products/tsconfig.json",
+              "hash": "15487755565970508470"
+            },
+            {
+              "file": "libs/products/tsconfig.lib.json",
+              "hash": "5796668385415907511"
+            },
+            {
+              "file": "libs/products/tsconfig.lib.prod.json",
+              "hash": "10809217796916261822"
+            },
+            {
+              "file": "libs/products/tsconfig.spec.json",
+              "hash": "2927375835638640771"
+            }
+          ]
+        }
+      },
+      "users": {
+        "name": "users",
+        "type": "lib",
+        "data": {
+          "name": "users",
+          "$schema": "../../node_modules/nx/schemas/project-schema.json",
+          "sourceRoot": "libs/users/src",
+          "prefix": "users",
+          "tags": [],
+          "projectType": "library",
+          "targets": {
+            "build": {
+              "dependsOn": [
+                "^build"
+              ],
+              "inputs": [
+                "production",
+                "^production"
+              ],
+              "executor": "@nx/angular:ng-packagr-lite",
+              "outputs": [
+                "{workspaceRoot}/dist/{projectRoot}"
+              ],
+              "options": {
+                "project": "libs/users/ng-package.json"
+              },
+              "configurations": {
+                "production": {
+                  "tsConfig": "libs/users/tsconfig.lib.prod.json"
+                },
+                "development": {
+                  "tsConfig": "libs/users/tsconfig.lib.json"
+                }
+              },
+              "defaultConfiguration": "production"
+            },
+            "test": {
+              "inputs": [
+                "default",
+                "^production",
+                "{workspaceRoot}/jest.preset.js"
+              ],
+              "executor": "@nx/jest:jest",
+              "outputs": [
+                "{workspaceRoot}/coverage/{projectRoot}"
+              ],
+              "options": {
+                "jestConfig": "libs/users/jest.config.ts",
+                "passWithNoTests": true
+              },
+              "configurations": {
+                "ci": {
+                  "ci": true,
+                  "codeCoverage": true
+                }
+              }
+            },
+            "lint": {
+              "inputs": [
+                "default",
+                "{workspaceRoot}/.eslintrc.json",
+                "{workspaceRoot}/.eslintignore"
+              ],
+              "executor": "@nx/linter:eslint",
+              "outputs": [
+                "{options.outputFile}"
+              ],
+              "options": {
+                "lintFilePatterns": [
+                  "libs/users/**/*.ts",
+                  "libs/users/**/*.html"
+                ]
+              },
+              "configurations": {}
+            }
+          },
+          "root": "libs/users",
+          "implicitDependencies": [],
+          "files": [
+            {
+              "file": "libs/users/.eslintrc.json",
+              "hash": "6170736713773636964"
+            },
+            {
+              "file": "libs/users/jest.config.ts",
+              "hash": "1817359183026306982"
+            },
+            {
+              "file": "libs/users/ng-package.json",
+              "hash": "4345352279240879518"
+            },
+            {
+              "file": "libs/users/package.json",
+              "hash": "3971655596085742241",
+              "dependencies": [
+                {
+                  "source": "users",
+                  "target": "npm:tslib",
+                  "type": "static"
+                },
+                {
+                  "source": "users",
+                  "target": "npm:@angular/common",
+                  "type": "static"
+                },
+                {
+                  "source": "users",
+                  "target": "npm:@angular/core",
+                  "type": "static"
+                }
+              ]
+            },
+            {
+              "file": "libs/users/project.json",
+              "hash": "5688719948304110745"
+            },
+            {
+              "file": "libs/users/README.md",
+              "hash": "1697122584494082199"
+            },
+            {
+              "file": "libs/users/src/index.ts",
+              "hash": "5328806233157364738"
+            },
+            {
+              "file": "libs/users/src/lib/lib.routes.ts",
+              "hash": "18106562715488562396",
+              "dependencies": [
+                {
+                  "source": "users",
+                  "target": "npm:@angular/router",
+                  "type": "static"
+                }
+              ]
+            },
+            {
+              "file": "libs/users/src/lib/pages/login/login.component.html",
+              "hash": "12407393041152213932"
+            },
+            {
+              "file": "libs/users/src/lib/pages/login/login.component.ts",
+              "hash": "9827783351443192434",
+              "dependencies": [
+                {
+                  "source": "users",
+                  "target": "admin",
+                  "type": "static"
+                },
+                {
+                  "source": "users",
+                  "target": "npm:@angular/forms",
+                  "type": "static"
+                },
+                {
+                  "source": "users",
+                  "target": "npm:@angular/core",
+                  "type": "static"
+                },
+                {
+                  "source": "users",
+                  "target": "npm:primeng",
+                  "type": "static"
+                },
+                {
+                  "source": "users",
+                  "target": "npm:@angular/router",
+                  "type": "static"
+                }
+              ]
+            },
+            {
+              "file": "libs/users/src/lib/services/auth-guard.service.ts",
+              "hash": "13857717879180567255",
+              "dependencies": [
+                {
+                  "source": "users",
+                  "target": "npm:@angular/core",
+                  "type": "static"
+                },
+                {
+                  "source": "users",
+                  "target": "npm:@angular/router",
+                  "type": "static"
+                }
+              ]
+            },
+            {
+              "file": "libs/users/src/lib/services/users.service.ts",
+              "hash": "16056016946216683535",
+              "dependencies": [
+                {
+                  "source": "users",
+                  "target": "npm:@angular/router",
+                  "type": "static"
+                },
+                {
+                  "source": "users",
+                  "target": "npm:./../../../../models/user",
+                  "type": "static"
+                },
+                {
+                  "source": "users",
+                  "target": "npm:@angular/common",
+                  "type": "static"
+                },
+                {
+                  "source": "users",
+                  "target": "npm:@angular/core",
+                  "type": "static"
+                },
+                {
+                  "source": "users",
+                  "target": "npm:rxjs",
+                  "type": "static"
+                }
+              ]
+            },
+            {
+              "file": "libs/users/src/lib/users.module.ts",
+              "hash": "5323891165877778726",
+              "dependencies": [
+                {
+                  "source": "users",
+                  "target": "npm:@angular/core",
+                  "type": "static"
+                },
+                {
+                  "source": "users",
+                  "target": "npm:@angular/common",
+                  "type": "static"
+                },
+                {
+                  "source": "users",
+                  "target": "npm:@angular/router",
+                  "type": "static"
+                },
+                {
+                  "source": "users",
+                  "target": "npm:primeng",
+                  "type": "static"
+                },
+                {
+                  "source": "users",
+                  "target": "npm:@angular/forms",
+                  "type": "static"
+                }
+              ]
+            },
+            {
+              "file": "libs/users/src/test-setup.ts",
+              "hash": "12935735732682149507",
+              "dependencies": [
+                {
+                  "source": "users",
+                  "target": "npm:jest-preset-angular",
+                  "type": "static"
+                }
+              ]
+            },
+            {
+              "file": "libs/users/tsconfig.json",
+              "hash": "15487755565970508470"
+            },
+            {
+              "file": "libs/users/tsconfig.lib.json",
+              "hash": "5796668385415907511"
+            },
+            {
+              "file": "libs/users/tsconfig.lib.prod.json",
+              "hash": "10809217796916261822"
+            },
+            {
+              "file": "libs/users/tsconfig.spec.json",
+              "hash": "2927375835638640771"
+            }
+          ]
+        }
+      },
+      "orders": {
+        "name": "orders",
+        "type": "lib",
+        "data": {
+          "name": "orders",
+          "$schema": "../../node_modules/nx/schemas/project-schema.json",
+          "sourceRoot": "libs/orders/src",
+          "prefix": "orders",
+          "tags": [],
+          "projectType": "library",
+          "targets": {
+            "build": {
+              "dependsOn": [
+                "^build"
+              ],
+              "inputs": [
+                "production",
+                "^production"
+              ],
+              "executor": "@nx/angular:ng-packagr-lite",
+              "outputs": [
+                "{workspaceRoot}/dist/{projectRoot}"
+              ],
+              "options": {
+                "project": "libs/orders/ng-package.json"
+              },
+              "configurations": {
+                "production": {
+                  "tsConfig": "libs/orders/tsconfig.lib.prod.json"
+                },
+                "development": {
+                  "tsConfig": "libs/orders/tsconfig.lib.json"
+                }
+              },
+              "defaultConfiguration": "production"
+            },
+            "test": {
+              "inputs": [
+                "default",
+                "^production",
+                "{workspaceRoot}/jest.preset.js"
+              ],
+              "executor": "@nx/jest:jest",
+              "outputs": [
+                "{workspaceRoot}/coverage/{projectRoot}"
+              ],
+              "options": {
+                "jestConfig": "libs/orders/jest.config.ts",
+                "passWithNoTests": true
+              },
+              "configurations": {
+                "ci": {
+                  "ci": true,
+                  "codeCoverage": true
+                }
+              }
+            },
+            "lint": {
+              "inputs": [
+                "default",
+                "{workspaceRoot}/.eslintrc.json",
+                "{workspaceRoot}/.eslintignore"
+              ],
+              "executor": "@nx/linter:eslint",
+              "outputs": [
+                "{options.outputFile}"
+              ],
+              "options": {
+                "lintFilePatterns": [
+                  "libs/orders/**/*.ts",
+                  "libs/orders/**/*.html"
+                ]
+              },
+              "configurations": {}
+            }
+          },
+          "root": "libs/orders",
+          "implicitDependencies": [],
+          "files": [
+            {
+              "file": "libs/orders/.eslintrc.json",
+              "hash": "4558826486305733187"
+            },
+            {
+              "file": "libs/orders/jest.config.ts",
+              "hash": "16109267373091716254"
+            },
+            {
+              "file": "libs/orders/ng-package.json",
+              "hash": "8127841966969879401"
+            },
+            {
+              "file": "libs/orders/package.json",
+              "hash": "12143332442799062676",
+              "dependencies": [
+                {
+                  "source": "orders",
+                  "target": "npm:tslib",
+                  "type": "static"
+                },
+                {
+                  "source": "orders",
+                  "target": "npm:@angular/common",
+                  "type": "static"
+                },
+                {
+                  "source": "orders",
+                  "target": "npm:@angular/core",
+                  "type": "static"
+                }
+              ]
+            },
+            {
+              "file": "libs/orders/project.json",
+              "hash": "11377147116766435568"
+            },
+            {
+              "file": "libs/orders/README.md",
+              "hash": "16545031501095266482"
+            },
+            {
+              "file": "libs/orders/src/index.ts",
+              "hash": "17079130908483224569"
+            },
+            {
+              "file": "libs/orders/src/lib/cart-icon/cart-icon.component.html",
+              "hash": "11871445521546163846"
+            },
+            {
+              "file": "libs/orders/src/lib/cart-icon/cart-icon.component.ts",
+              "hash": "13107309779492172832",
+              "dependencies": [
+                {
+                  "source": "orders",
+                  "target": "npm:@angular/core",
+                  "type": "static"
+                }
+              ]
+            },
+            {
+              "file": "libs/orders/src/lib/checkout-page/checkout-page.component.html",
+              "hash": "11726821098358194234"
+            },
+            {
+              "file": "libs/orders/src/lib/checkout-page/checkout-page.component.ts",
+              "hash": "1982280254385710691",
+              "dependencies": [
+                {
+                  "source": "orders",
+                  "target": "npm:@angular/core",
+                  "type": "static"
+                },
+                {
+                  "source": "orders",
+                  "target": "npm:@angular/forms",
+                  "type": "static"
+                },
+                {
+                  "source": "orders",
+                  "target": "npm:@angular/router",
+                  "type": "static"
+                },
+                {
+                  "source": "orders",
+                  "target": "npm:libs/models/orderItem",
+                  "type": "static"
+                },
+                {
+                  "source": "orders",
+                  "target": "npm:libs/models/cart",
+                  "type": "static"
+                },
+                {
+                  "source": "orders",
+                  "target": "npm:libs/models/order",
+                  "type": "static"
+                }
+              ]
+            },
+            {
+              "file": "libs/orders/src/lib/lib.routes.ts",
+              "hash": "1347492531706909733",
+              "dependencies": [
+                {
+                  "source": "orders",
+                  "target": "npm:@angular/router",
+                  "type": "static"
+                },
+                {
+                  "source": "orders",
+                  "target": "ks-shop",
+                  "type": "static"
+                }
+              ]
+            },
+            {
+              "file": "libs/orders/src/lib/order-summary/order-summary.component.html",
+              "hash": "3482012148009816215"
+            },
+            {
+              "file": "libs/orders/src/lib/order-summary/order-summary.component.ts",
+              "hash": "11413567762624886341",
+              "dependencies": [
+                {
+                  "source": "orders",
+                  "target": "npm:@angular/core",
+                  "type": "static"
+                },
+                {
+                  "source": "orders",
+                  "target": "npm:rxjs",
+                  "type": "static"
+                },
+                {
+                  "source": "orders",
+                  "target": "npm:@angular/router",
+                  "type": "static"
+                }
+              ]
+            },
+            {
+              "file": "libs/orders/src/lib/orders.module.ts",
+              "hash": "18404375317206087487",
+              "dependencies": [
+                {
+                  "source": "orders",
+                  "target": "npm:primeng",
+                  "type": "static"
+                },
+                {
+                  "source": "orders",
+                  "target": "npm:@angular/forms",
+                  "type": "static"
+                },
+                {
+                  "source": "orders",
+                  "target": "npm:@angular/core",
+                  "type": "static"
+                },
+                {
+                  "source": "orders",
+                  "target": "npm:@angular/common",
+                  "type": "static"
+                },
+                {
+                  "source": "orders",
+                  "target": "npm:@angular/router",
+                  "type": "static"
+                }
+              ]
+            },
+            {
+              "file": "libs/orders/src/lib/services/cart.service.ts",
+              "hash": "17616582241237349395",
+              "dependencies": [
+                {
+                  "source": "orders",
+                  "target": "npm:rxjs",
+                  "type": "static"
+                },
+                {
+                  "source": "orders",
+                  "target": "npm:./../../../../models/cart",
+                  "type": "static"
+                },
+                {
+                  "source": "orders",
+                  "target": "npm:@angular/core",
+                  "type": "static"
+                }
+              ]
+            },
+            {
+              "file": "libs/orders/src/lib/services/orders.service.ts",
+              "hash": "13787131911006884998",
+              "dependencies": [
+                {
+                  "source": "orders",
+                  "target": "npm:./../../../../models/order",
+                  "type": "static"
+                },
+                {
+                  "source": "orders",
+                  "target": "npm:@angular/core",
+                  "type": "static"
+                },
+                {
+                  "source": "orders",
+                  "target": "npm:@angular/common",
+                  "type": "static"
+                },
+                {
+                  "source": "orders",
+                  "target": "npm:rxjs",
+                  "type": "static"
+                },
+                {
+                  "source": "orders",
+                  "target": "npm:libs/models/product",
+                  "type": "static"
+                }
+              ]
+            },
+            {
+              "file": "libs/orders/src/lib/thank-you/thank-you.component.html",
+              "hash": "17139390179813253175"
+            },
+            {
+              "file": "libs/orders/src/lib/thank-you/thank-you.component.ts",
+              "hash": "11883966541580239009",
+              "dependencies": [
+                {
+                  "source": "orders",
+                  "target": "npm:@angular/core",
+                  "type": "static"
+                }
+              ]
+            },
+            {
+              "file": "libs/orders/src/test-setup.ts",
+              "hash": "12935735732682149507",
+              "dependencies": [
+                {
+                  "source": "orders",
+                  "target": "npm:jest-preset-angular",
+                  "type": "static"
+                }
+              ]
+            },
+            {
+              "file": "libs/orders/tsconfig.json",
+              "hash": "15487755565970508470"
+            },
+            {
+              "file": "libs/orders/tsconfig.lib.json",
+              "hash": "5796668385415907511"
+            },
+            {
+              "file": "libs/orders/tsconfig.lib.prod.json",
+              "hash": "10809217796916261822"
+            },
+            {
+              "file": "libs/orders/tsconfig.spec.json",
+              "hash": "2927375835638640771"
+            }
+          ]
+        }
+      }
+    },
+    "dependencies": {
+      "ks-shop-e2e": [
+        {
+          "source": "ks-shop-e2e",
+          "target": "ks-shop",
+          "type": "implicit"
+        }
+      ],
+      "ks-shop": [
+        {
+          "source": "ks-shop",
+          "target": "ui",
+          "type": "static"
+        },
+        {
+          "source": "ks-shop",
+          "target": "orders",
+          "type": "static"
+        },
+        {
+          "source": "ks-shop",
+          "target": "products",
+          "type": "static"
+        }
+      ],
+      "admin-e2e": [
+        {
+          "source": "admin-e2e",
+          "target": "admin",
+          "type": "implicit"
+        }
+      ],
+      "admin": [
+        {
+          "source": "admin",
+          "target": "products",
+          "type": "static"
+        },
+        {
+          "source": "admin",
+          "target": "users",
+          "type": "static"
+        },
+        {
+          "source": "admin",
+          "target": "orders",
+          "type": "static"
+        }
+      ],
+      "ui": [
+        {
+          "source": "ui",
+          "target": "products",
+          "type": "static"
+        },
+        {
+          "source": "ui",
+          "target": "orders",
+          "type": "static"
+        },
+        {
+          "source": "ui",
+          "target": "ks-shop",
+          "type": "static"
+        }
+      ],
+      "products": [],
+      "users": [
+        {
+          "source": "users",
+          "target": "admin",
+          "type": "static"
+        }
+      ],
+      "orders": [
+        {
+          "source": "orders",
+          "target": "ks-shop",
+          "type": "static"
+        }
+      ]
+    }
+  },
+  "affectedProjects": [],
+  "criticalPath": []
+}

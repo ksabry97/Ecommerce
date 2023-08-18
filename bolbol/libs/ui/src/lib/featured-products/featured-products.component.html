@@ -1,0 +1,8 @@
+<div class="featuredProducts mt-2">
+  <h3>Featured Products</h3>
+  <div class="products">
+    <div class="productItem" *ngFor="let product of featuredProducts">
+      <ui-product-item [product]="product"></ui-product-item>
+    </div>
+  </div>
+</div>

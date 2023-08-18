@@ -1,0 +1,58 @@
+<div class="card flex justify-content-center gap-2">
+  <p-toast></p-toast>
+  <p-confirmDialog [style]="{ width: '50vw' }"></p-confirmDialog>
+</div>
+
+<div class="admin-page">
+  <div class="grid">
+    <p-card class="col-12" header=" Orders" subheader=" List of Orders">
+      <p-table
+        class="col-12 align-content-center"
+        [value]="orders"
+        [tableStyle]="{ 'min-width': '15rem' }"
+        styleClass="p-datatable-gridlines"
+        style="text-align: center"
+      >
+        <ng-template pTemplate="header">
+          <tr>
+            <th pSortableColumn="user">
+              User <p-sortIcon field="user"></p-sortIcon>
+            </th>
+            <th>Total Price</th>
+            <th>Status</th>
+            <th>Date Ordered</th>
+            <th></th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-order>
+          <tr>
+            <td>{{ order.user.name }}</td>
+            <td>
+              {{ order.totalPrice | currency }}
+            </td>
+            <td>
+              <p-tag
+                [severity]="orderStatus[order.status].color"
+                [value]="orderStatus[order.status].label"
+              ></p-tag>
+            </td>
+            <td>{{ order.dateOrdered | date }}</td>
+            <td>
+              <p-button
+                styleClass="p-button-danger"
+                icon="pi pi-trash"
+                class="mr-1"
+                (onClick)="deleteOrder(order.id)"
+              ></p-button>
+              <p-button
+                styleClass="p-button-success"
+                icon="pi pi-eye"
+                (onClick)="showOrder(order.id)"
+              ></p-button>
+            </td>
+          </tr>
+        </ng-template>
+      </p-table>
+    </p-card>
+  </div>
+</div>

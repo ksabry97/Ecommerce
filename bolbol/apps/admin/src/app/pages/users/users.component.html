@@ -1,0 +1,71 @@
+<div class="card flex justify-content-center gap-2">
+  <p-toast></p-toast>
+  <p-confirmDialog [style]="{ width: '50vw' }"></p-confirmDialog>
+</div>
+
+<div class="admin-page">
+  <div class="grid">
+    <p-card class="col-12" header=" Users" subheader=" List of Users">
+      <p-toolbar>
+        <p-button
+          label="New"
+          icon="pi pi-plus"
+          routerLink="/users/form"
+        ></p-button>
+      </p-toolbar>
+      <p-table
+        class="col-12 align-content-center"
+        [value]="users"
+        [tableStyle]="{ 'min-width': '15rem' }"
+        styleClass="p-datatable-gridlines"
+        style="text-align: center"
+      >
+        <ng-template pTemplate="header">
+          <tr>
+            <th pSortableColumn="name">
+              Name <p-sortIcon field="name"></p-sortIcon>
+            </th>
+            <th>Email</th>
+            <th>Is Admin</th>
+            <th>Country</th>
+            <th></th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-user>
+          <tr>
+            <td>{{ user.name }}</td>
+            <td>{{ user.email }}</td>
+            <td>
+              <p-tag
+                *ngIf="user.isAdmin"
+                icon="pi pi-check"
+                severity="success"
+                [rounded]="true"
+              ></p-tag>
+              <p-tag
+                *ngIf="!user.isAdmin"
+                icon="pi pi-times"
+                severity="danger"
+                [rounded]="true"
+              ></p-tag>
+            </td>
+            <td>{{ user.country }}</td>
+            <td>
+              <p-button
+                (onClick)="delete(user.id)"
+                styleClass="p-button-danger"
+                icon="pi pi-trash"
+                class="mr-1"
+              ></p-button>
+              <p-button
+                (onClick)="edit(user.id)"
+                styleClass="p-button-success"
+                icon="pi pi-pencil"
+              ></p-button>
+            </td>
+          </tr>
+        </ng-template>
+      </p-table>
+    </p-card>
+  </div>
+</div>

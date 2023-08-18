@@ -1,0 +1,17 @@
+/* Global Styles */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body,
+.p-component {
+  box-sizing: border-box;
+  font-family: 'Slabo 27px', serif;
+  overflow-x: hidden;
+}
+a {
+  text-decoration: none;
+}
+
+/* Shared Classes */

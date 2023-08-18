@@ -1,0 +1,182 @@
+<p-toast></p-toast>
+<div class="admin-page">
+  <div class="grid">
+    <p-card
+      class="col-12"
+      [header]="editMode ? 'Editing Users' : 'Adding Users'"
+      subheader="you can add or edit Users here"
+    >
+      <p-toolbar>
+        <div class="p-toolbar-group-start"></div>
+        <div class="p-toolbar-group-end">
+          <p-button
+            (onClick)="onSubmit()"
+            styleClass="p-button-success"
+            [label]="editMode ? 'update' : 'create'"
+            icon="pi pi-plus"
+            class="mr-2"
+          ></p-button>
+          <p-button
+            (onClick)="onCancel()"
+            styleClass="p-button-danger"
+            label="Cancel"
+            icon="pi pi-delete-left"
+          ></p-button>
+        </div>
+      </p-toolbar>
+      <form [formGroup]="form">
+        <div class="formgrid grid mt-2">
+          <div class="field col-4">
+            <label for="Name">Name</label>
+            <input
+              id="Name"
+              formControlName="name"
+              type="text"
+              class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+            />
+            <p
+              class="p-error"
+              *ngIf="form.controls['name'].invalid && isSubmitted"
+            >
+              Name is required
+            </p>
+          </div>
+          <div class="field col-4">
+            <label for="Email">Email</label>
+            <input
+              id="Email"
+              formControlName="email"
+              type="text"
+              class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+            />
+            <p
+              class="p-error"
+              *ngIf="form.controls['email'].invalid && isSubmitted"
+            >
+              <span> Email is required</span>
+            </p>
+          </div>
+          <div class="field col-4">
+            <label for="Password">Password</label>
+            <input
+              id="Password"
+              formControlName="password"
+              type="text"
+              class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+            />
+            <p
+              class="p-error"
+              *ngIf="form.controls['password'].invalid && isSubmitted"
+            >
+              Password is required
+            </p>
+          </div>
+        </div>
+
+        <div class="formgrid grid mt-2">
+          <div class="field col-4">
+            <label for="phone">phone</label> <br />
+            <p-inputNumber
+              inputId="phone"
+              formControlName="phone"
+              style="height: 2.3rem"
+            >
+            </p-inputNumber>
+            <p
+              class="p-error"
+              *ngIf="form.controls['phone'].invalid && isSubmitted"
+            >
+              Phone is required
+            </p>
+          </div>
+          <div class="field col-2">
+            <label for="isAdmin">is Admin</label> <br />
+            <p-inputSwitch formControlName="isAdmin"></p-inputSwitch>
+          </div>
+        </div>
+        <div class="formgrid grid mt-2">
+          <div class="field col-4">
+            <label for="Street">Street</label>
+            <input
+              id="Street"
+              formControlName="street"
+              type="text"
+              class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+            />
+            <p
+              class="p-error"
+              *ngIf="form.controls['street'].invalid && isSubmitted"
+            >
+              Street is required
+            </p>
+          </div>
+          <div class="field col-4">
+            <label for="Apartment">Apartment</label>
+            <input
+              id="Apartment"
+              formControlName="apartment"
+              type="text"
+              class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+            />
+            <p
+              class="p-error"
+              *ngIf="form.controls['apartment'].invalid && isSubmitted"
+            >
+              Apartment is required
+            </p>
+          </div>
+          <div class="field col-4">
+            <label for="zipCode">Zip Code</label> <br />
+            <p-inputNumber
+              inputId="zipCode"
+              formControlName="zipCode"
+              style="height: 2.3rem"
+            >
+            </p-inputNumber>
+            <p
+              class="p-error"
+              *ngIf="form.controls['zipCode'].invalid && isSubmitted"
+            >
+              Zip Code is required
+            </p>
+          </div>
+        </div>
+        <div class="formgrid grid mt-2">
+          <div class="field col-4">
+            <label for="City">City</label>
+            <input
+              id="City"
+              formControlName="city"
+              type="text"
+              class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+            />
+            <p
+              class="p-error"
+              *ngIf="form.controls['city'].invalid && isSubmitted"
+            >
+              City is required
+            </p>
+          </div>
+          <div class="field col-6">
+            <label for="country">Country</label> <br />
+            <p-dropdown
+              [options]="countries"
+              formControlName="country"
+              optionLabel="name"
+              optionValue="id"
+              [filter]="true"
+              filterBy="name"
+              [showClear]="true"
+            ></p-dropdown>
+            <p
+              class="p-error"
+              *ngIf="form.controls['country'].invalid && isSubmitted"
+            >
+              Country is required
+            </p>
+          </div>
+        </div>
+      </form>
+    </p-card>
+  </div>
+</div>

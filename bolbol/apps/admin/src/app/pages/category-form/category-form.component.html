@@ -1,0 +1,67 @@
+<p-toast></p-toast>
+<div class="admin-page">
+  <div class="grid">
+    <p-card
+      class="col-12"
+      [header]="editMode ? 'Editing Categories' : 'Adding Categories'"
+      subheader="you can add or edit categories here"
+    >
+      <p-toolbar>
+        <div class="p-toolbar-group-start"></div>
+        <div class="p-toolbar-group-end">
+          <p-button
+            (onClick)="onSubmit()"
+            styleClass="p-button-success"
+            [label]="editMode ? 'update' : 'create'"
+            icon="pi pi-plus"
+            class="mr-2"
+          ></p-button>
+          <p-button
+            (onClick)="onCancel()"
+            styleClass="p-button-danger"
+            label="Cancel"
+            icon="pi pi-delete-left"
+          ></p-button>
+        </div>
+      </p-toolbar>
+      <form [formGroup]="form">
+        <div class="formgrid grid mt-2">
+          <div class="field col-5">
+            <label for="Name">Name</label>
+            <input
+              id="Name"
+              formControlName="name"
+              type="text"
+              class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+            />
+            <p
+              class="p-error"
+              *ngIf="form.controls['name'].invalid && isSubmitted"
+            >
+              Name is required
+            </p>
+          </div>
+          <div class="field col-5">
+            <label for="Icon">Icon</label>
+            <input
+              id="Icon"
+              formControlName="icon"
+              type="text"
+              class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+            />
+            <p
+              class="p-error"
+              *ngIf="form.controls['icon'].invalid && isSubmitted"
+            >
+              icon is required
+            </p>
+          </div>
+          <div class="feild col-2">
+            <label for="color"> Color </label> <br />
+            <p-colorPicker id=" color" formControlName="color"></p-colorPicker>
+          </div>
+        </div>
+      </form>
+    </p-card>
+  </div>
+</div>

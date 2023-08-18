@@ -1,0 +1,6 @@
+.categories-list {
+  margin-top: 4rem;
+  padding-top: 5rem;
+  display: flex;
+  flex-direction: column;
+}

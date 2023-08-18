@@ -1,0 +1,15 @@
+.item {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+.item .pi {
+  font-size: 50px;
+  margin-bottom: 10px;
+}
+span {
+  font-size: 30px;
+}
+.d-order {
+  background: var(--gradient-primary);
+}

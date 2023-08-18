@@ -1,0 +1,52 @@
+<p-toast></p-toast>
+<div class="login-container">
+  <div class="login-panel">
+    <div class="login-img">
+      <img src="assets/login-photo.png" />
+    </div>
+    <div class="login-form p-2">
+      <form [formGroup]="loginForm">
+        <h1>Welcome !!</h1>
+        <h3>Login Page</h3>
+        <div class="p-inputgroup mt-6 mb-2">
+          <span class="p-inputgroup-addon">
+            <i class="pi pi-user"></i>
+          </span>
+          <input formControlName="email" pInputText placeholder="Email" />
+        </div>
+        <small
+          *ngIf="logForm['email'].invalid && isSubmitted"
+          class="p-error mb-1"
+        >
+          email is required
+        </small>
+        <div class="p-inputgroup">
+          <span class="p-inputgroup-addon">
+            <i class="pi pi-lock"></i>
+          </span>
+          <input
+            formControlName="password"
+            type="password"
+            pInputText
+            placeholder="Password"
+          />
+        </div>
+        <small
+          *ngIf="logForm['password'].invalid && isSubmitted"
+          class="p-error"
+        >
+          password is required
+        </small>
+        <div class="login-btn">
+          <button
+            pButton
+            pRipple
+            (click)="onSubmit()"
+            label="Submit"
+            class="p-button-success"
+          ></button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

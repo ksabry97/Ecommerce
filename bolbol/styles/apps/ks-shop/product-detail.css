@@ -1,0 +1,72 @@
+.p-inputnumber-button-group {
+  height: 2rem;
+}
+
+.buttons p-button {
+  display: inline-block;
+  width: 8rem;
+  height: 4rem;
+  text-align: center;
+}
+.buttons .p-button {
+  background-color: #fba1b7;
+  border: #fba1b7;
+}
+p-inputNumber .p-button {
+  background: #fba1b7;
+  border: #fba1b7;
+}
+.buttons .p-button:enabled:active {
+  background-color: white;
+  color: #fba1b7;
+  border: #fba1b7;
+}
+.rich-desc {
+  line-height: 1.8rem;
+}
+
+@media screen and (max-width: 760px) {
+  * {
+    font-size: smaller;
+  }
+
+  .product-details h3 {
+    font-size: smaller;
+  }
+  .detail {
+    font-size: 0.6rem;
+  }
+  .p-input-number-input {
+    display: inline-block;
+    height: 1rem;
+  }
+  .p-inputnumber-button-group {
+    height: 1rem;
+    width: 50%;
+  }
+  .quantity .p-inputtext {
+    height: 1rem;
+    padding: 0.3rem 0.7rem;
+    font-size: 0.3rem;
+  }
+  .quantity .p-icon {
+    width: 0.5rem;
+    height: 0.5rem;
+  }
+
+  .buttons {
+    display: flex;
+  }
+  .buttons p-button .p-button-rounded {
+    padding: 0.2rem;
+    display: inline-block;
+    width: 3.5rem;
+    height: 1.5rem;
+    text-align: center;
+    font-size: 0.6rem;
+  }
+  .rich-desc {
+    line-height: 0.6rem;
+    padding-left: 0.6rem;
+  }
+}
